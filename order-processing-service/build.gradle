@@ -1,0 +1,15 @@
+group 'com.arbaazmeghani'
+version '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile project(':common')
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'org.springframework.cloud:spring-cloud-stream'
+    implementation 'org.springframework.cloud:spring-cloud-stream-binder-rabbit'
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+    testImplementation 'org.springframework.amqp:spring-rabbit-test'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
