@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
@@ -24,15 +21,12 @@ public class Order {
     @GeneratedValue
     private Long id;
 
-    private String firstName;
-    private String lastName;
-    private String addressLine1;
-    private String addressLine2;
-    private String email;
-    private String phoneNumber;
-    private Integer productId;
-    private Integer quantity;
     private BigDecimal totalCost;
-
     private OrderStatus orderStatus = OrderStatus.PROCESSING;
+
+    private Customer customer;
+    private Address address;
+
+    @OneToMany
+    private Product product;
 }
