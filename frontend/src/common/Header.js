@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, Typography, Badge } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
@@ -25,7 +25,9 @@ class Header extends React.Component {
               E-Commerce
             </Typography>
             <IconButton aria-label="Shopping Cart">
-              <ShoppingCart htmlColor="#FFFFFF"/>
+              <Badge badgeContent={4} color="secondary">
+                <ShoppingCart htmlColor="#FFFFFF"/>
+              </Badge>
             </IconButton>
           </Toolbar>
         </AppBar>
