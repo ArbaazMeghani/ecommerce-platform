@@ -14,7 +14,7 @@ public class OrderProcessingService {
     }
 
     public void processOrder(Order order) {
-        log.info("New Order Received with ID: {}", order.getId());
+        log.info("New Order Received with ID: {}", order.getOrderId());
         orderPublisherService.publishOrder(order, OrderStatus.SHIPPED);
     }
 }

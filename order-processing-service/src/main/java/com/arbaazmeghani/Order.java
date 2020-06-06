@@ -7,24 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class Order {
+    private Long orderId;
 
-    private Long id;
-
-    private String firstName;
-    private String lastName;
-    private String addressLine1;
-    private String addressLine2;
-    private String email;
-    private String phoneNumber;
-    private Integer productId;
-    private Integer quantity;
     private BigDecimal totalCost;
-
     private OrderStatus orderStatus = OrderStatus.PROCESSING;
+
+    private Customer customer;
+    private List<Product> product;
 }

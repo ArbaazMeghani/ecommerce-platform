@@ -17,6 +17,6 @@ public class OrderStatusUpdateListener {
 
     @StreamListener(OrderConstants.ORDERS_INPUT)
     public void updateOrderStatus(Order order) {
-        orderService.updateOrderStatus(order.getId(), order);
+        orderService.updateOrderStatus(order.getOrderId(), order);
     }
 }

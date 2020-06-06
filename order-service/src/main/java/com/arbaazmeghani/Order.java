@@ -5,9 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,14 +21,17 @@ public class Order {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long orderId;
 
     private BigDecimal totalCost;
+
+    @Builder.Default
     private OrderStatus orderStatus = OrderStatus.PROCESSING;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="CUSTOMER_ID")
     private Customer customer;
-    private Address address;
 
-    @OneToMany
-    private Product product;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Product> products;
 }

@@ -5,7 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 @Data
@@ -14,7 +17,12 @@ import java.math.BigDecimal;
 @Builder
 @Entity
 public class Product {
+
+    @Id
+    @GeneratedValue
     Long productId;
+
+    Long productNumber;
     Long quantity;
     BigDecimal price;
 }

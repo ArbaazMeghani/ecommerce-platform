@@ -20,7 +20,7 @@ public class OrderService {
 
     public void addOrder(Order order) {
         orderRepository.save(order);
-        log.info("New Order Received with ID: {}", order.getId());
+        log.info("New Order Received with ID: {}", order.getOrderId());
         orderPublisherService.publishOrder(order, order.getOrderStatus());
     }
 
@@ -31,7 +31,7 @@ public class OrderService {
     public void updateOrderStatus(Long orderId, Order order) {
         Optional<Order> existingOrder = orderRepository.findById(orderId);
 
-        if(!orderId.equals(order.getId()) || !existingOrder.isPresent()) {
+        if(!orderId.equals(order.getOrderId()) || !existingOrder.isPresent()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
