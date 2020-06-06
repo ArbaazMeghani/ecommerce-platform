@@ -1,6 +1,8 @@
 import React from 'react'
 import Product from './components/Product'
 import Axios from 'axios'
+import { Grid } from '@material-ui/core'
+import './styles/home.css'
 
 export default class Home extends React.Component {
   constructor() {
@@ -17,18 +19,21 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const test = this.products()
     return (
-      <div className="App">
-        {test}
-      </div>
+      <Grid container spaceing={0} direction="row" justify="center" alignItems="center">
+        {this.products()}
+      </Grid>
     );
   }
 
   products() {
     return this.state.products.map(product => {
       console.log(product)
-      return <Product key={product.id} product={product}> </Product>;
+      return (
+        <Grid item className="product">
+          <Product key={product.id} product={product} />
+        </Grid>
+      )
     })
   }
 
