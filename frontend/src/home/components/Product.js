@@ -28,7 +28,7 @@ export default function Product(props) {
 
   return (
     <Card className={classes.root}>
-      <Link to={`/product/${props.product.id}`} className={classes.noTextDecoration}>
+      <Link to={`/product/${props.product.productId}`} className={classes.noTextDecoration}>
         <CardActionArea>
           <CardMedia
             className={classes.media}

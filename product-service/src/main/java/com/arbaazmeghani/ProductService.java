@@ -24,7 +24,7 @@ public class ProductService {
     }
 
     public void updateProduct(Long productId, Product product) {
-        if(!productId.equals(product.getId()) || !productRepository.findById(productId).isPresent()) {
+        if(!productId.equals(product.getProductId()) || !productRepository.findById(productId).isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         productRepository.save(product);

@@ -1,5 +1,6 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
+
 import { withStyles } from '@material-ui/styles';
 import CartButton from './CartButton'
 

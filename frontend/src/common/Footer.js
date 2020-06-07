@@ -22,7 +22,6 @@ const useStyles = () => ({
 class Footer extends React.Component {
   render() {
     const {classes} = this.props
-    console.log(classes)
     return (
       <div className={classes.root}>
         <Typography>
