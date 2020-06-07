@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux'
-import reducers from './reducers/reducers'
+import reducers from './reducers/Reducers'
 import { Provider } from 'react-redux'
 
 let store = createStore(reducers)
