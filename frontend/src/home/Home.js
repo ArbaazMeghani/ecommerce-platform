@@ -27,13 +27,11 @@ export default class Home extends React.Component {
   }
 
   products() {
-    return this.state.products.map(product => {
-      return (
+    return this.state.products.map(product =>
         <Grid item className="product" key={product.productId}>
           <Product product={product} />
         </Grid>
-      )
-    })
+    )
   }
 
   componentDidMount() {
