@@ -1,7 +1,7 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Badge } from '@material-ui/core'
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import CartButton from './CartButton'
 
 const styles = () => ({
   root: {
@@ -24,11 +24,7 @@ class Header extends React.Component {
             <Typography variant="h6" className={classes.title}>
               E-Commerce
             </Typography>
-            <IconButton aria-label="Shopping Cart">
-              <Badge badgeContent={4} color="secondary">
-                <ShoppingCart htmlColor="#FFFFFF"/>
-              </Badge>
-            </IconButton>
+            <CartButton />
           </Toolbar>
         </AppBar>
       </div>

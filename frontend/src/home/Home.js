@@ -30,8 +30,8 @@ export default class Home extends React.Component {
     return this.state.products.map(product => {
       console.log(product)
       return (
-        <Grid item className="product">
-          <Product key={product.id} product={product} />
+        <Grid item className="product" key={product.id}>
+          <Product product={product} />
         </Grid>
       )
     })
