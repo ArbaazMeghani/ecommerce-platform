@@ -12,7 +12,11 @@ export default class Home extends React.Component {
         productId: 1,
         title: "sample",
         description: "sample product description",
-        imageUrl: "https://images.ctfassets.net/od02wyo8cgm5/mwtuRPXhS6CHwQB0oqA11/78ebafbc12f98797c0fd7b5c4cd266bd/cloud_x_1-fw19-midnight_cobalt-m-g1.png",
+        images: [
+          {
+            imageUrl: "https://images.ctfassets.net/od02wyo8cgm5/mwtuRPXhS6CHwQB0oqA11/78ebafbc12f98797c0fd7b5c4cd266bd/cloud_x_1-fw19-midnight_cobalt-m-g1.png"
+          }
+        ],
         price: 24.99
       }]
     }

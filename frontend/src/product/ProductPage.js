@@ -23,7 +23,11 @@ class ProductPage extends React.Component {
         id: 1,
         title: "sample",
         description: "sample product description",
-        imageUrl: "https://images.ctfassets.net/od02wyo8cgm5/mwtuRPXhS6CHwQB0oqA11/78ebafbc12f98797c0fd7b5c4cd266bd/cloud_x_1-fw19-midnight_cobalt-m-g1.png",
+        images: [
+          {
+            imageUrl: "https://images.ctfassets.net/od02wyo8cgm5/mwtuRPXhS6CHwQB0oqA11/78ebafbc12f98797c0fd7b5c4cd266bd/cloud_x_1-fw19-midnight_cobalt-m-g1.png"
+          }
+        ],
         price: 24.99
       }
     }
@@ -35,7 +39,7 @@ class ProductPage extends React.Component {
     return (
       <Grid container spacing={0} direction="row" justify="center" alignItems="center">
         <Grid item xs={6}>
-          <img src={this.state.product.imageUrl} width="500"/>
+          <img src={this.state.product.images[0].imageUrl} width="500"/>
         </Grid>
         <Grid item xs={6}>
             <h1>{this.state.product.title}</h1>

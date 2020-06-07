@@ -32,7 +32,7 @@ export default function Product(props) {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={props.product.imageUrl}
+            image={props.product.images[0].imageUrl}
             title={props.product.title}
           />
           <CardContent>
