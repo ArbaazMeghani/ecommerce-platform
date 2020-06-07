@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import CartManagementButton from '../../common/CartManagementButton';
 
 const useStyles = makeStyles({
   root: {
@@ -45,9 +46,7 @@ export default function Product(props) {
         </CardActionArea>
       </Link>
       <CardActions>
-        <Button size="small" color="primary">
-          Add to Cart
-        </Button>
+        <CartManagementButton product={props.product} />
         <Button size="small" color="primary">
           Buy Now
         </Button>
