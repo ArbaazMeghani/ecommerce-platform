@@ -2,7 +2,7 @@ import React from 'react'
 import Axios from 'axios'
 import { withStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid'
-import { Button } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import CartManagementButton from '../common/CartManagementButton';
 
 const useStyles = () => ({
@@ -19,6 +19,7 @@ class ProductPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      quantity: '',
       product: {
         id: 1,
         title: "sample",
@@ -43,6 +44,9 @@ class ProductPage extends React.Component {
         <Grid item xs={6}>
             <h1>{this.state.product.title}</h1>
             <h4>{this.state.product.price}</h4>
+            <TextField type="number" label="Quantity" value={this.state.quantity} onChange={this.handleQuantityUpdate}/>
+            <br />
+            <br />
             <CartManagementButton product={this.state.product} />
             <Button>Buy it now</Button>
 
@@ -58,6 +62,18 @@ class ProductPage extends React.Component {
     Axios.get(`http://localhost:8762/product-service/products/${productId}`)
     .then(res => this.setState({ product: res.data }))
     .catch(console.log)
+  }
+
+  handleQuantityUpdate = (event) => {
+    if(event.target.value < 0) {
+      return;
+    } else if(event.target.value == 0) {
+      event.target.value = ''
+    }
+    
+    this.setState({
+      quantity: event.target.value
+    })
   }
 }
 
