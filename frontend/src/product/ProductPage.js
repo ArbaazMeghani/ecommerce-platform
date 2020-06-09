@@ -1,19 +1,19 @@
 import React from 'react'
 import Axios from 'axios'
-import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid'
 import { Button } from '@material-ui/core';
 import CartManagementButton from '../common/CartManagementButton';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = () => ({
   root: {
-    margin: theme.spacing(0),
-    flexGrow: 1,
-    maxWidth: `100%`,
-    flexBasis: `100%`
+    marginLeft: "12%",
+    marginTop: "2%",
+    marginRight: "12%",
+    minWidth: "100%",
+    maxWidth: "100%",
   }
-}))
+})
 
 class ProductPage extends React.Component {
   constructor(props) {
@@ -34,10 +34,9 @@ class ProductPage extends React.Component {
   }
   render() {
     const {classes} = this.props
-    console.log(classes)
 
     return (
-      <Grid container spacing={0} direction="row" justify="center" alignItems="center">
+      <Grid container spacing={0} direction="row" justify="center" alignItems="center" className={classes.root}>
         <Grid item xs={6}>
           <img src={this.state.product.images[0].imageUrl} width="500"/>
         </Grid>
@@ -46,9 +45,8 @@ class ProductPage extends React.Component {
             <h4>{this.state.product.price}</h4>
             <CartManagementButton product={this.state.product} />
             <Button>Buy it now</Button>
-        </Grid>
-        <Grid item xs={12}>
-            {this.state.product.description}
+
+            <h3>{this.state.product.description}</h3>
         </Grid>
       </Grid>
     )
