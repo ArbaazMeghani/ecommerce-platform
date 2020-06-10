@@ -19,7 +19,6 @@ class ProductPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      quantity: '',
       product: {
         id: 1,
         title: "sample",
@@ -29,6 +28,7 @@ class ProductPage extends React.Component {
             imageUrl: "https://images.ctfassets.net/od02wyo8cgm5/mwtuRPXhS6CHwQB0oqA11/78ebafbc12f98797c0fd7b5c4cd266bd/cloud_x_1-fw19-midnight_cobalt-m-g1.png"
           }
         ],
+        quantity: '',
         price: 24.99
       }
     }
@@ -44,7 +44,7 @@ class ProductPage extends React.Component {
         <Grid item xs={6}>
             <h1>{this.state.product.title}</h1>
             <h4>{this.state.product.price}</h4>
-            <TextField type="number" label="Quantity" value={this.state.quantity} onChange={this.handleQuantityUpdate}/>
+            <TextField type="number" label="Quantity" value={this.state.product.quantity} onChange={this.handleQuantityUpdate}/>
             <br />
             <br />
             <CartManagementButton product={this.state.product} />
@@ -60,19 +60,24 @@ class ProductPage extends React.Component {
     const productId = this.props.location.pathname.split("/")[2]
     console.log(productId)
     Axios.get(`http://localhost:8762/product-service/products/${productId}`)
-    .then(res => this.setState({ product: res.data }))
+    .then(res => {
+      res.data.quantity = ''
+      this.setState({ product: res.data })
+    })
     .catch(console.log)
   }
 
   handleQuantityUpdate = (event) => {
     if(event.target.value < 0) {
       return;
-    } else if(event.target.value == 0) {
+    } else if(event.target.value === 0) {
       event.target.value = ''
     }
-    
+    const product = this.state.product
+    product.quantity = event.target.value
+
     this.setState({
-      quantity: event.target.value
+      product: product
     })
   }
 }
