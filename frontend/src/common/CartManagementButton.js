@@ -13,8 +13,16 @@ export default function CartManagementButton({product}) {
   const action = containsProduct ? RemoveFromCart : AddToCart
 
   return (
-    <Button onClick={() => dispatch(action(product))}>
+    <Button onClick={() => dispatchAction(dispatch, action, product)}>
       {text}
     </Button>
   )
+}
+
+function dispatchAction(dispatch, action, product) {
+  if(action === AddToCart && product.quantity <= 0) {
+    return;
+  }
+
+  dispatch(action(product))
 }

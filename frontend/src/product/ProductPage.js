@@ -58,7 +58,6 @@ class ProductPage extends React.Component {
 
   componentDidMount() {
     const productId = this.props.location.pathname.split("/")[2]
-    console.log(productId)
     Axios.get(`http://localhost:8762/product-service/products/${productId}`)
     .then(res => {
       res.data.quantity = ''
