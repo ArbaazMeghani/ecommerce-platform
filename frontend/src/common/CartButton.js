@@ -1,9 +1,22 @@
 import React from 'react'
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import { IconButton, Badge, Modal } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux'
 
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
+
 export default function CartButton() {
+  const classes = useStyles();
   const productCount = useSelector(state => state.cart.length)
   const [open, setOpen] = React.useState(false);
 
@@ -28,7 +41,12 @@ export default function CartButton() {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <h1>hello</h1>
+        <div className={classes.paper}>
+          <h2 id="simple-modal-title">Text in a modal</h2>
+          <p id="simple-modal-description">
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </p>
+        </div>
       </Modal>
     </>
   )
