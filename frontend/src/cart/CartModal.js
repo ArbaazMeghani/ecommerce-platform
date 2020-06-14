@@ -32,6 +32,7 @@ export default function CartModal({open, handleChange}) {
     >
       <div className={classes.paper}>
         <h2 id="simple-modal-title">Shopping Cart</h2>
+        <hr />
         <CartProduct />
       </div>
     </Modal>
