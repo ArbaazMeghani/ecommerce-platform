@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux'
+import CartProduct from './CartProduct';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CartModal({open, handleChange}) {
   const classes = useStyles();
-  const products = useSelector(state => state.cart)
 
   return (
     <Modal
@@ -33,6 +32,7 @@ export default function CartModal({open, handleChange}) {
     >
       <div className={classes.paper}>
         <h2 id="simple-modal-title">Shopping Cart</h2>
+        <CartProduct />
       </div>
     </Modal>
   )

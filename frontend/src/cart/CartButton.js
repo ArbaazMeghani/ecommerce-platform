@@ -2,7 +2,7 @@ import React from 'react'
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import { IconButton, Badge } from '@material-ui/core'
 import { useSelector } from 'react-redux'
-import CartModal from '../cart/CartModal'
+import CartModal from './CartModal'
 
 export default function CartButton() {
   const productCount = useSelector(state => state.cart.length)
