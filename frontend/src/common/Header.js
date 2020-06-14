@@ -2,7 +2,7 @@ import React from 'react'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
 
 import { withStyles } from '@material-ui/styles';
-import CartButton from './CartButton'
+import CartButton from '../cart/CartButton'
 
 const styles = () => ({
   root: {
