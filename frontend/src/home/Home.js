@@ -10,6 +10,7 @@ export default class Home extends React.Component {
     this.state = {
       products: [{
         productId: 1,
+        quantity: 1,
         title: "sample",
         description: "sample product description",
         images: [
@@ -31,11 +32,12 @@ export default class Home extends React.Component {
   }
 
   products() {
-    return this.state.products.map(product =>
-        <Grid item className="product" key={product.productId}>
+    return this.state.products.map(product => {
+        product.quantity = 1
+        return <Grid item className="product" key={product.productId}>
           <Product product={product} />
         </Grid>
-    )
+    })
   }
 
   componentDidMount() {

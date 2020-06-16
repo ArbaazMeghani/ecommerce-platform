@@ -28,7 +28,7 @@ class ProductPage extends React.Component {
             imageUrl: "https://images.ctfassets.net/od02wyo8cgm5/mwtuRPXhS6CHwQB0oqA11/78ebafbc12f98797c0fd7b5c4cd266bd/cloud_x_1-fw19-midnight_cobalt-m-g1.png"
           }
         ],
-        quantity: '',
+        quantity: 1,
         price: 24.99
       }
     }
@@ -60,7 +60,7 @@ class ProductPage extends React.Component {
     const productId = this.props.location.pathname.split("/")[2]
     Axios.get(`http://localhost:8762/product-service/products/${productId}`)
     .then(res => {
-      res.data.quantity = ''
+      res.data.quantity = 1
       this.setState({ product: res.data })
     })
     .catch(console.log)
