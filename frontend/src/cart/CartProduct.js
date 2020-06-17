@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Button, Card, CardActionArea, CardContent, CardActions, Typography, CardMedia } from '@material-ui/core'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -17,22 +17,18 @@ const useStyles = makeStyles({
     height: 50,
     maxWidth: 10,
   },
-  noTextDecoration: {
-    textDecoration: 'inherit',
-    color: "inherit",
-  },
 })
 
-export default function CartProduct() {
+export default function CartProduct({handleClose}) {
   const products = useSelector(state => state.cart)
   const classes = useStyles();
+  const history = useHistory()
 
   const productList = () => {
     return products.map(product => {
       return (
         <Card className={classes.root}>
-          <Link to={`/product/${product.productId}`} className={classes.noTextDecoration}>
-            <CardActionArea>
+            <CardActionArea onClick={() => handleProductClick(product)}>
               <CardMedia
                 className={classes.media}
                 image={product.images[0].imageUrl}
@@ -50,7 +46,6 @@ export default function CartProduct() {
                 </Typography>
               </CardContent>
             </CardActionArea>
-          </Link>
           <CardActions>
             <Button size="small" color="primary">
               X
@@ -59,6 +54,12 @@ export default function CartProduct() {
         </Card>
       )
     })
+  }
+
+  const handleProductClick = (product) => {
+    const path = `/product/${product.productId}`;
+    history.push(path);
+    handleClose()
   }
 
   const allProducts = productList()
