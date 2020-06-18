@@ -1,8 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Button, Card, CardActionArea, CardContent, CardActions, Typography, CardMedia } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom';
+import { RemoveFromCart } from '../actions/Cart'
 
 const useStyles = makeStyles({
   root: {
@@ -21,8 +22,9 @@ const useStyles = makeStyles({
 
 export default function CartProduct({handleClose}) {
   const products = useSelector(state => state.cart)
-  const classes = useStyles();
+  const classes = useStyles()
   const history = useHistory()
+  const dispatch = useDispatch()
 
   const productList = () => {
     return products.map(product => {
@@ -47,7 +49,7 @@ export default function CartProduct({handleClose}) {
               </CardContent>
             </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary"onClick={() => dispatch(RemoveFromCart(product))}>
               X
             </Button>
           </CardActions>
