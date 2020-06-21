@@ -29,7 +29,7 @@ export default function CartProduct({handleClose}) {
   const productList = () => {
     return products.map(product => {
       return (
-        <Card className={classes.root}>
+        <Card className={classes.root} key={product.productId}>
             <CardActionArea onClick={() => handleProductClick(product)}>
               <CardMedia
                 className={classes.media}
@@ -59,8 +59,14 @@ export default function CartProduct({handleClose}) {
   }
 
   const handleProductClick = (product) => {
-    const path = `/product/${product.productId}`;
-    history.push(path);
+    const path = `/product/${product.productId}`
+    history.push(path)
+    handleClose()
+  }
+
+  const handleCheckout = () => {
+    const path = '/checkout'
+    history.push(path)
     handleClose()
   }
 
@@ -70,7 +76,7 @@ export default function CartProduct({handleClose}) {
     return (
       <>
         {allProducts}
-        <Button variant="contained" color="primary">Checkout</Button>
+        <Button variant="contained" color="primary" onClick={handleCheckout}>Checkout</Button>
       </>
     )
   } else {
