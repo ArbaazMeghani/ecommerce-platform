@@ -4,6 +4,7 @@ import { Button, Card, CardActionArea, CardContent, CardActions, Typography, Car
 import { makeStyles } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom';
 import { RemoveFromCart } from '../actions/Cart'
+import CheckoutButton from '../checkout/components/CheckoutButton';
 
 const useStyles = makeStyles({
   root: {
@@ -49,7 +50,7 @@ export default function CartProduct({handleClose}) {
               </CardContent>
             </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary"onClick={() => dispatch(RemoveFromCart(product))}>
+            <Button size="small" color="primary" onClick={() => dispatch(RemoveFromCart(product))}>
               X
             </Button>
           </CardActions>
@@ -64,19 +65,13 @@ export default function CartProduct({handleClose}) {
     handleClose()
   }
 
-  const handleCheckout = () => {
-    const path = '/checkout'
-    history.push(path)
-    handleClose()
-  }
-
   const allProducts = productList()
 
   if(allProducts.length > 0) {
     return (
       <>
         {allProducts}
-        <Button variant="contained" color="primary" onClick={handleCheckout}>Checkout</Button>
+        <CheckoutButton buttonText="Checkout"/>
       </>
     )
   } else {
