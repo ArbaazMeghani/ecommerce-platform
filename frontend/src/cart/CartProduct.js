@@ -71,7 +71,7 @@ export default function CartProduct({handleClose}) {
     return (
       <>
         {allProducts}
-        <CheckoutButton buttonText="Checkout"/>
+        <CheckoutButton buttonText="Checkout" handleClick={handleClose}/>
       </>
     )
   } else {
