@@ -30,31 +30,8 @@ export default function CartProduct({handleClose}) {
   const productList = () => {
     return products.map(product => {
       return (
-        <Card className={classes.root} key={product.productId}>
-            <CardActionArea onClick={() => handleProductClick(product)}>
-              <CardMedia
-                className={classes.media}
-                image={product.images[0].imageUrl}
-                title={product.title}
-              />
-              <CardContent className={classes.action}>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {product.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  price: {product.price}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  quantity: {product.quantity}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          <CardActions>
-            <Button size="small" color="primary" onClick={() => dispatch(RemoveFromCart(product))}>
-              X
-            </Button>
-          </CardActions>
-        </Card>
+        <>
+        </>
       )
     })
   }
