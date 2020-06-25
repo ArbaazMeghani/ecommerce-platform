@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Button, Card, CardActionArea, CardContent, CardActions, Typography, CardMedia } from '@material-ui/core'
+import { Button, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom';
 import { RemoveFromCart } from '../actions/Cart'
@@ -9,7 +9,6 @@ import CheckoutButton from '../checkout/components/CheckoutButton';
 const useStyles = makeStyles({
   root: {
     minWidth: "100%",
-    // maxHeight: 50,
   },
   action: {
     display: "flex",
@@ -30,8 +29,31 @@ export default function CartProduct({handleClose}) {
   const productList = () => {
     return products.map(product => {
       return (
-        <>
-        </>
+        <Grid container spacing={0} direction="row" justify="space-between" alignItems="center">
+          <Grid item>
+              {product.images[0].url}
+          </Grid>
+          <Grid item>
+            <Typography>
+              {product.title}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography>
+              {product.quantity}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography>
+              {product.price}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Button>
+              X
+            </Button>
+          </Grid>
+        </Grid>
       )
     })
   }
@@ -47,6 +69,31 @@ export default function CartProduct({handleClose}) {
   if(allProducts.length > 0) {
     return (
       <>
+      <Grid container spacing={0} direction="row" justify="space-between" alignItems="center">
+          <Grid item>
+              Image
+          </Grid>
+          <Grid item>
+            <Typography>
+              Title
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography>
+              Quantity
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography>
+              Cost
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography>
+              Remove
+            </Typography>
+          </Grid>
+        </Grid>
         {allProducts}
         <CheckoutButton buttonText="Checkout" handleClick={handleClose}/>
       </>
