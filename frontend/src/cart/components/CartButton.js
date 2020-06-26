@@ -1,8 +1,8 @@
 import React from 'react'
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import ShoppingCart from '@material-ui/icons/ShoppingCart'
 import { IconButton, Badge } from '@material-ui/core'
 import { useSelector } from 'react-redux'
-import CartModal from './CartModal'
+import Cart from '../Cart'
 
 export default function CartButton() {
   const productCount = useSelector(state => state.cart.length)
@@ -19,7 +19,7 @@ export default function CartButton() {
           <ShoppingCart htmlColor="#FFFFFF"/>
         </Badge>
       </IconButton>
-      <CartModal open={open} handleChange={handleChange} />
+      <Cart open={open} handleChange={handleChange} />
     </>
   )
 }

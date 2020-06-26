@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { AddToCart, RemoveFromCart } from '../actions/Cart'
+import { AddToCart, RemoveFromCart } from '../actions/CartActions'
 import { Button } from '@material-ui/core'
 
 

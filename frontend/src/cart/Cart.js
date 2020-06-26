@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
-import CartProduct from './CartProduct';
+import { makeStyles } from '@material-ui/core/styles'
+import CartModal from './components/CartModal'
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CartModal({open, handleChange}) {
+export default function Cart({open, handleChange}) {
   const classes = useStyles();
 
   return (
@@ -34,7 +34,7 @@ export default function CartModal({open, handleChange}) {
       <div className={classes.paper}>
         <h2 id="simple-modal-title">Shopping Cart</h2>
         <hr />
-        <CartProduct handleClose={handleChange}/>
+        <CartModal handleClose={handleChange}/>
       </div>
     </Modal>
   )
