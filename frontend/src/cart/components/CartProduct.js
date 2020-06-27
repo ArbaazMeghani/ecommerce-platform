@@ -1,7 +1,11 @@
 import React from 'react'
 import { Grid, Typography, Button } from '@material-ui/core'
+import { RemoveFromCart } from '../../actions/CartActions'
+import { useDispatch } from 'react-redux'
 
 export default function CartProduct({products}) {
+  const disptach = useDispatch()
+
   return products.map(product => {
     return (
       <>
@@ -24,7 +28,7 @@ export default function CartProduct({products}) {
           </Typography>
         </Grid>
         <Grid item xs={2}>
-          <Button variant="outlined" color="secondary">
+          <Button variant="outlined" color="secondary" onClick={() => disptach(RemoveFromCart(product))}>
             X
           </Button>
         </Grid>
