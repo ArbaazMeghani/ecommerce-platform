@@ -5,25 +5,27 @@ export default function CartProductHeader() {
   return (
     <>
       <Grid item xs={4}>
-        Image
+        <Typography variant="overline">
+          Image
+        </Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography>
+        <Typography variant="overline">
           Title
         </Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography>
+        <Typography variant="overline">
           Quantity
         </Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography>
+        <Typography variant="overline">
           Cost
         </Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography>
+        <Typography variant="overline">
           Remove From Cart
         </Typography>
       </Grid>
