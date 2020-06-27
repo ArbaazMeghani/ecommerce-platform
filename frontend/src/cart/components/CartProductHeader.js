@@ -24,7 +24,7 @@ export default function CartProductHeader() {
       </Grid>
       <Grid item xs={2}>
         <Typography>
-          Remove
+          Remove From Cart
         </Typography>
       </Grid>
     </>

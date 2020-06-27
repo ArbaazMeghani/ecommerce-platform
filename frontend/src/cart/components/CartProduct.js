@@ -6,7 +6,7 @@ export default function CartProduct({products}) {
     return (
       <>
         <Grid item xs={4}>
-          {product.images[0].imageUrl}
+          <img src={product.images[0].imageUrl} style={{maxHeight:200, maxWidth:200}} alt={product.description}/>
         </Grid>
         <Grid item xs={2}>
           <Typography>
@@ -24,7 +24,7 @@ export default function CartProduct({products}) {
           </Typography>
         </Grid>
         <Grid item xs={2}>
-          <Button>
+          <Button variant="outlined" color="secondary">
             X
           </Button>
         </Grid>
