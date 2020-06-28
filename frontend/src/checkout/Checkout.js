@@ -14,14 +14,14 @@ export default function Checkout() {
     <div style={{marginLeft: "20%", marginRight: "20%"}}>
       <h1>checkout</h1>
       <form>
-        <Grid container spacing={0} justify="center" direction="column">
-        <Grid container spacing={2} justify="flex-start" alignItems="center" direction="row">
-          <Grid item>
-            <TextField id="standard-basic" label="First Name" />
-          </Grid>
-          <Grid item>
-            <TextField id="standard-basic" label="Last Name" />
-          </Grid>
+        <Grid container spacing={3} justify="center" direction="column">
+          <Grid container spacing={2} justify="flex-start" alignItems="center" direction="row">
+            <Grid item>
+              <TextField id="standard-basic" label="First Name" />
+            </Grid>
+            <Grid item>
+              <TextField id="standard-basic" label="Last Name" />
+            </Grid>
           </Grid>
           <Grid item>
             <TextField id="standard-basic" label="Email" />
