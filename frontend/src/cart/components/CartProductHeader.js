@@ -21,13 +21,16 @@ export default function CartProductHeader() {
       </Grid>
       <Grid item xs={2}>
         <Typography variant="overline">
-          Cost
+          Cost ea.
         </Typography>
       </Grid>
       <Grid item xs={2}>
         <Typography variant="overline">
           Remove From Cart
         </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <hr />
       </Grid>
     </>
   )

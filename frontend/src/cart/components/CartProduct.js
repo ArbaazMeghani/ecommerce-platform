@@ -32,6 +32,9 @@ export default function CartProduct({products}) {
             X
           </Button>
         </Grid>
+        <Grid item xs={12}>
+          <hr />
+        </Grid>
       </>
     )
   })
