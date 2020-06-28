@@ -14,27 +14,27 @@ export default function Checkout() {
     <div style={{marginLeft: "20%", marginRight: "20%"}}>
       <h1>checkout</h1>
       <form>
-        <Grid container spacing={3} justify="center" direction="column">
+        <Grid container spacing={0} justify="center" direction="column">
           <Grid container spacing={2} justify="flex-start" alignItems="center" direction="row">
             <Grid item>
-              <TextField id="standard-basic" label="First Name" />
+              <TextField id="standard-basic" label="First Name" required/>
             </Grid>
             <Grid item>
-              <TextField id="standard-basic" label="Last Name" />
+              <TextField id="standard-basic" label="Last Name" required/>
             </Grid>
           </Grid>
           <Grid item>
-            <TextField id="standard-basic" label="Email" />
+            <TextField id="standard-basic" label="Email" required/>
           </Grid>
           <Grid item>
-            <TextField id="standard-basic" label="Phone" />
+            <TextField id="standard-basic" label="Phone" required/>
           </Grid>
           <Grid item>
-            <TextField id="standard-basic" label="Street Address" />
+            <TextField id="standard-basic" label="Street Address" required/>
           </Grid>
           <Grid container spacing={2} justify="flex-start" alignItems="center" direction="row">
             <Grid item>
-              <TextField id="standard-basic" label="City" />
+              <TextField id="standard-basic" label="City" required/>
             </Grid>
             <Grid item>
               <FormControl>
@@ -42,13 +42,14 @@ export default function Checkout() {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
+                  required
                 >
                   <StateChoices />
                 </Select>
               </FormControl>
             </Grid>
             <Grid item>
-              <TextField id="standard-basic" label="Zipcode" />
+              <TextField id="standard-basic" label="Zipcode" required/>
             </Grid>
           </Grid>
         </Grid>
