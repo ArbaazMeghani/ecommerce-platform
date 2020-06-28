@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { TextField } from '@material-ui/core'
+import { TextField, InputLabel, Select, FormControl } from '@material-ui/core'
+import StateChoices from './components/StateChoices'
 
 export default function Checkout() {
   const products = useSelector(state => state.cart)
@@ -23,7 +24,15 @@ export default function Checkout() {
         <TextField id="standard-basic" label="Street Address" />
         <br />
         <TextField id="standard-basic" label="City" />
-        <TextField id="standard-basic" label="State" />
+        <FormControl>
+          <InputLabel id="demo-simple-select-label">State</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+          >
+            <StateChoices />
+          </Select>
+        </FormControl>
         <TextField id="standard-basic" label="Zipcode" />
 
       </form>
