@@ -10,6 +10,11 @@ export default function Checkout() {
     totalPrice += product.quantity * product.price
   })
 
+  const handleUpdate = (label, value) => {
+    console.log(label)
+    console.log(value)
+  }
+
   return (
     <div style={{marginLeft: "20%", marginRight: "20%"}}>
       <h1>checkout</h1>
