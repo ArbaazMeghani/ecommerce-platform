@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { TextField, InputLabel, Select, FormControl, Grid } from '@material-ui/core'
+import { InputLabel, Select, FormControl, Grid } from '@material-ui/core'
 import StateChoices from './components/StateChoices'
+import CheckoutInput from './components/CheckoutInput'
 
 export default function Checkout() {
   const products = useSelector(state => state.cart)
@@ -21,26 +22,14 @@ export default function Checkout() {
       <form>
         <Grid container spacing={0} justify="center" direction="column">
           <Grid container spacing={2} justify="flex-start" alignItems="center" direction="row">
-            <Grid item>
-              <TextField id="standard-basic" label="First Name" required/>
-            </Grid>
-            <Grid item>
-              <TextField id="standard-basic" label="Last Name" required/>
-            </Grid>
+            <CheckoutInput label="First Name" updateValue={handleUpdate}/>
+            <CheckoutInput label="Last Name" updateValue={handleUpdate}/>
           </Grid>
-          <Grid item>
-            <TextField id="standard-basic" label="Email" required/>
-          </Grid>
-          <Grid item>
-            <TextField id="standard-basic" label="Phone" required/>
-          </Grid>
-          <Grid item>
-            <TextField id="standard-basic" label="Street Address" required/>
-          </Grid>
+          <CheckoutInput label="Email" updateValue={handleUpdate}/>
+          <CheckoutInput label="Phone" type="number" updateValue={handleUpdate}/>
+          <CheckoutInput label="Street Address" updateValue={handleUpdate}/>
           <Grid container spacing={2} justify="flex-start" alignItems="center" direction="row">
-            <Grid item>
-              <TextField id="standard-basic" label="City" required/>
-            </Grid>
+          <CheckoutInput label="City" updateValue={handleUpdate}/>
             <Grid item>
               <FormControl>
                 <InputLabel id="demo-simple-select-label">State</InputLabel>
@@ -53,9 +42,7 @@ export default function Checkout() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item>
-              <TextField id="standard-basic" label="Zipcode" required/>
-            </Grid>
+            <CheckoutInput label="Zipcode" updateValue={handleUpdate}/>
           </Grid>
         </Grid>
       </form>
