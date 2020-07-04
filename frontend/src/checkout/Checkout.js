@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Grid, Button } from '@material-ui/core'
 import CheckoutInput from './components/CheckoutInput'
 import StateDropdown from './components/StateDropdown'
+import Axios from 'axios'
 
 export default function Checkout() {
   const [userInfo, setUserInfo] = useState({
@@ -20,6 +21,7 @@ export default function Checkout() {
   let totalPrice = 0.0
   products.forEach(product => {
     totalPrice += product.quantity * product.price
+    product.productNumber = product.productId
   })
 
   const handleUpdate = (field, value) => {
@@ -29,7 +31,24 @@ export default function Checkout() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    console.log("submitted")
+    Axios.post("http://localhost:8762/order-service/orders", {
+      customer: {
+        firstName: userInfo.firstName,
+        lastName: userInfo.lastName,
+        email: userInfo.email,
+        phoneNumber: userInfo.phone,
+        address: {
+          streetAddress: userInfo.streetAddress,
+          city: userInfo.city,
+          state: userInfo.state,
+          zipCode: userInfo.zipCode
+        }
+      },
+      products: products,
+      totalCost: totalPrice
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   }
 
   return (
