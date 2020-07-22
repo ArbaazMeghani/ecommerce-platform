@@ -17,11 +17,12 @@ export default function Checkout() {
     zipCode: ""
   })
 
-  const products = useSelector(state => state.cart)
+  const products = useSelector(state => JSON.parse(JSON.stringify(state.cart)))
   let totalPrice = 0.0
   products.forEach(product => {
     totalPrice += product.quantity * product.price
     product.productNumber = product.productId
+    product.productId = null
   })
 
   const handleUpdate = (field, value) => {
