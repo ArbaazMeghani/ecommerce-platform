@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Grid, Button } from '@material-ui/core'
 import CheckoutInput from './components/CheckoutInput'
 import StateDropdown from './components/StateDropdown'
-import Axios from 'axios'
+import { createOrder } from '../api'
 
 export default function Checkout() {
   const [userInfo, setUserInfo] = useState({
@@ -32,7 +32,7 @@ export default function Checkout() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    Axios.post("http://localhost:8762/order-service/orders", {
+    createOrder({
       customer: {
         firstName: userInfo.firstName,
         lastName: userInfo.lastName,
@@ -48,8 +48,6 @@ export default function Checkout() {
       products: products,
       totalCost: totalPrice
     })
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
   }
 
   return (
