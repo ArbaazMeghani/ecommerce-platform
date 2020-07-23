@@ -1,8 +1,8 @@
 import React from 'react'
 import Product from './components/Product'
-import Axios from 'axios'
 import { Grid } from '@material-ui/core'
 import './styles/home.css'
+import { retrieveProducts } from '../api'
 
 export default class Home extends React.Component {
   constructor() {
@@ -40,9 +40,11 @@ export default class Home extends React.Component {
     })
   }
 
+  saveProducts = (products) => {
+    this.setState({products: products})
+  }
+
   componentDidMount() {
-    Axios.get("http://localhost:8762/product-service/products")
-    .then(res => this.setState({ products: res.data }))
-    .catch(console.log)
+    retrieveProducts(this.saveProducts)
   }
 }
