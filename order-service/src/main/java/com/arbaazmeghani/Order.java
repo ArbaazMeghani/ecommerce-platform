@@ -24,6 +24,7 @@ public class Order {
     private Long orderId;
 
     private BigDecimal totalCost;
+    private String stripePaymentId;
 
     @Builder.Default
     private OrderStatus orderStatus = OrderStatus.PROCESSING;

@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid'
 import { Button, TextField } from '@material-ui/core';
 import CartManagementButton from '../common/CartManagementButton';
+import BuyNowButton from '../common/BuyNowButton';
 
 const useStyles = () => ({
   root: {
@@ -48,7 +49,7 @@ class ProductPage extends React.Component {
             <br />
             <br />
             <CartManagementButton product={this.state.product} />
-            <Button>Buy it now</Button>
+            <BuyNowButton product={this.state.product} />
 
             <h3>{this.state.product.description}</h3>
         </Grid>

@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import CartManagementButton from '../../common/CartManagementButton';
+import BuyNowButton from '../../common/BuyNowButton';
 
 const useStyles = makeStyles({
   root: {
@@ -47,9 +48,7 @@ export default function Product(props) {
       </Link>
       <CardActions>
         <CartManagementButton product={props.product} />
-        <Button size="small" color="primary">
-          Buy Now
-        </Button>
+        <BuyNowButton product={props.product}/>
       </CardActions>
     </Card>
   );
