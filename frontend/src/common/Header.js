@@ -1,10 +1,10 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
-
-import { withStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles'
 import CartButton from '../cart/components/CartButton'
+import { useHistory } from 'react-router-dom' 
 
-const styles = () => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
     marginLeft: "5%",
@@ -12,25 +12,26 @@ const styles = () => ({
   },
   title: {
     flexGrow: 1,
+    cursor: "pointer"
   },
-});
+}))
 
-class Header extends React.Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" className={classes.title}>
-              E-Commerce
-            </Typography>
-            <CartButton />
-          </Toolbar>
-        </AppBar>
-      </div>
-    )
-  }
+const Header = () => {
+  const classes = useStyles()
+  const history = useHistory()
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography onClick={() => history.push("/")} variant="h6" className={classes.title}>
+            E-Commerce
+          </Typography>
+          <CartButton />
+        </Toolbar>
+      </AppBar>
+    </div>
+  )
 }
 
-export default withStyles(styles)(Header);
+export default Header

@@ -11,8 +11,7 @@ const useStyles = () => ({
     marginLeft: "12%",
     marginTop: "2%",
     marginRight: "12%",
-    minWidth: "100%",
-    maxWidth: "100%",
+    width: "80%",
   }
 })
 
@@ -40,7 +39,7 @@ class ProductPage extends React.Component {
     return (
       <Grid container spacing={0} direction="row" justify="center" alignItems="center" className={classes.root}>
         <Grid item xs={6}>
-          <img src={this.state.product.images[0].imageUrl} width="500"/>
+          <img src={this.state.product.images[0].imageUrl} width="500px"/>
         </Grid>
         <Grid item xs={6}>
             <h1>{this.state.product.title}</h1>
