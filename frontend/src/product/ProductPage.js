@@ -2,7 +2,7 @@ import React from 'react'
 import Axios from 'axios'
 import { withStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid'
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import CartManagementButton from '../common/CartManagementButton';
 import BuyNowButton from '../common/BuyNowButton';
 

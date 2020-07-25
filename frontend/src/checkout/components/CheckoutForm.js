@@ -1,10 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Grid, Button } from '@material-ui/core'
 import CheckoutInput from './CheckoutInput'
-import { CardElement } from '@stripe/react-stripe-js'
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
 import StateDropdown from './StateDropdown'
+import { createOrder } from '../../api'
 
-const CheckoutForm = ({handleUpdate, handleSubmit, userInfo, price}) => {
+const CheckoutForm = ({products, price}) => {
+  const stripe = useStripe()
+  const elements = useElements()
+  
+  const [userInfo, setUserInfo] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    streetAddress: "",
+    city: "",
+    state: "",
+    zipCode: ""
+  })
+
+  const handleUpdate = (field, value) => {
+    setUserInfo({...userInfo, [field]: value})
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    const cardElement = elements.getElement(CardElement)
+    console.log(cardElement)
+
+    createOrder(userInfo, products, price)
+  }
+
+
   return (
     <form onSubmit={handleSubmit}>
       <Grid container spacing={0} justify="center" direction="column">
@@ -36,7 +65,7 @@ const CheckoutForm = ({handleUpdate, handleSubmit, userInfo, price}) => {
         </Grid>
       </Grid>
       <br />
-  <Button variant="contained" type="submit" color="primary">Pay ${price}</Button>
+      <Button variant="contained" type="submit" color="primary">Pay ${price}</Button>
     </form>
   )
 }
