@@ -1,4 +1,5 @@
 import Axios from'axios'
+import Keys from '../config/Keys'
 
 const createOrder = async (userInfo, products, totalPrice) => {
   const order = {
@@ -17,7 +18,7 @@ const createOrder = async (userInfo, products, totalPrice) => {
     products: products,
     totalCost: totalPrice
   }
-  await Axios.post("http://localhost:8762/order-service/orders", order)
+  await Axios.post(Keys.PROXY_URL + Keys.ORDERS_PATH, order)
 }
 
 export default createOrder

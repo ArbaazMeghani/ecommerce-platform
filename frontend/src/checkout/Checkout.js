@@ -4,6 +4,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import CheckoutForm from './components/CheckoutForm'
 import { useHistory } from 'react-router-dom'
+import Keys from '../config/Keys'
 
 export default function Checkout() {
   const history = useHistory()
@@ -20,7 +21,7 @@ export default function Checkout() {
     product.productId = null
   })
 
-  const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh')
+  const stripePromise = loadStripe(Keys.STRIPE_API_KEY)
 
   return (
     <div style={{marginLeft: "20%", marginRight: "20%"}}>
