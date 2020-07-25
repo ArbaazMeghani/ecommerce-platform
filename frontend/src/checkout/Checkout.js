@@ -4,8 +4,11 @@ import { createOrder } from '../api'
 import {Elements, useElements, useStripe} from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
 import CheckoutForm from './components/CheckoutForm'
+import { useHistory } from 'react-router-dom'
 
 export default function Checkout() {
+  const history = useHistory()
+
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -18,6 +21,11 @@ export default function Checkout() {
   })
 
   const products = useSelector(state => JSON.parse(JSON.stringify(state.cart)))
+
+  if(products.length === 0) {
+    history.push("/")
+  }
+
   let totalPrice = 0.0
   products.forEach(product => {
     totalPrice += product.quantity * product.price

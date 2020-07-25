@@ -20,8 +20,19 @@ const CheckoutForm = ({handleUpdate, handleSubmit, userInfo, price}) => {
           <StateDropdown field="state" value={userInfo.state} updateValue={handleUpdate}/>
           <CheckoutInput field="zipCode" label="Zipcode" value={userInfo.zipCode} updateValue={handleUpdate}/>
         </Grid>
-        <Grid item>
-          <CardElement />
+        <br />
+        <Grid item xs={6}>
+          <div style={{ borderBottom: "solid 1px" }}>
+            <CardElement options={{
+              style: {
+                base: {
+                  fontFamily: "Arial",
+                  fontSize: "16px",
+                  color: "#000000"
+                }
+              }
+            }}/>
+          </div>
         </Grid>
       </Grid>
       <br />
