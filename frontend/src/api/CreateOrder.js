@@ -1,7 +1,7 @@
 import Axios from'axios'
 import Keys from '../config/Keys'
 
-const createOrder = async (userInfo, products, totalPrice) => {
+const createOrder = async (userInfo, paymentMethod, products, totalPrice) => {
   const order = {
     customer: {
       firstName: userInfo.firstName,
@@ -16,7 +16,8 @@ const createOrder = async (userInfo, products, totalPrice) => {
       }
     },
     products: products,
-    totalCost: totalPrice
+    totalCost: totalPrice,
+    stripePaymentId: paymentMethod.id
   }
   await Axios.post(Keys.PROXY_URL + Keys.ORDERS_PATH, order)
 }

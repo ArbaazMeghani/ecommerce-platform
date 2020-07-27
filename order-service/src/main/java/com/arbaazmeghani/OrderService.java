@@ -12,13 +12,16 @@ import java.util.Optional;
 public class OrderService {
     private OrderRepository orderRepository;
     private OrderPublisherService orderPublisherService;
+    private StripeClient stripeClient;
 
-    public OrderService(OrderRepository orderRepository, OrderPublisherService orderPublisherService) {
+    public OrderService(OrderRepository orderRepository, OrderPublisherService orderPublisherService, StripeClient stripeClient) {
         this.orderRepository = orderRepository;
         this.orderPublisherService = orderPublisherService;
+        this.stripeClient = stripeClient;
     }
 
     public void addOrder(Order order) {
+        stripeClient.charge(order.getStripePaymentId(), order.getTotalCost());
         orderRepository.save(order);
         log.info("New Order Received with ID: {}", order.getOrderId());
         orderPublisherService.publishOrder(order, order.getOrderStatus());

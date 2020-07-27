@@ -24,13 +24,17 @@ const CheckoutForm = ({products, price}) => {
     setUserInfo({...userInfo, [field]: value})
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     const cardElement = elements.getElement(CardElement)
-    console.log(cardElement)
 
-    createOrder(userInfo, products, price)
+    const {paymentMethod} = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
+    });
+
+    createOrder(userInfo, paymentMethod, products, price)
   }
 
 

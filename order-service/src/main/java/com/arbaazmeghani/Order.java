@@ -24,6 +24,8 @@ public class Order {
     private Long orderId;
 
     private BigDecimal totalCost;
+
+    @Transient
     private String stripePaymentId;
 
     @Builder.Default
