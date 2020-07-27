@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, FormControl, Select, InputLabel, MenuItem } from '@material-ui/core'
+import { Grid, FormControl, Select, InputLabel } from '@material-ui/core'
 
 const states =[
   "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", 
@@ -21,7 +21,7 @@ export default function StateDropdown({field, value, updateValue}) {
           value={value}
           onChange={(event) => updateValue(field, event.target.value, (value) => true)}
         >
-          {states.map(state => <MenuItem key={state} value={state}>{state}</MenuItem>)}
+          {states.map(state => <option key={state} value={state}>{state}</option>)}
         </Select>
       </FormControl>
     </Grid>
