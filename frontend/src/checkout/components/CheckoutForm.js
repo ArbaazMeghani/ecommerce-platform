@@ -20,7 +20,10 @@ const CheckoutForm = ({products, price, orderComplete}) => {
     zipCode: ""
   })
 
-  const handleUpdate = (field, value) => {
+  const handleUpdate = (field, value, validate) => {
+    if(!validate(value)) {
+      return
+    }
     setUserInfo({...userInfo, [field]: value})
   }
 
@@ -46,12 +49,12 @@ const CheckoutForm = ({products, price, orderComplete}) => {
           <CheckoutInput field="lastName" label="Last Name" value={userInfo.lastName} updateValue={handleUpdate}/>
         </Grid>
         <CheckoutInput field="email" label="Email" value={userInfo.email} updateValue={handleUpdate}/>
-        <CheckoutInput field="phone" label="Phone" type="number" value={userInfo.phone} updateValue={handleUpdate}/>
+        <CheckoutInput field="phone" label="Phone" type="number" value={userInfo.phone} updateValue={handleUpdate} validate={(value) => value.length <= 10}/>
         <CheckoutInput field="streetAddress" label="Street Address" value={userInfo.streetAddress} updateValue={handleUpdate}/>
         <Grid container spacing={2} justify="flex-start" alignItems="center" direction="row">
           <CheckoutInput field="city" label="City" value={userInfo.city} updateValue={handleUpdate}/>
           <StateDropdown field="state" value={userInfo.state} updateValue={handleUpdate}/>
-          <CheckoutInput field="zipCode" label="Zipcode" value={userInfo.zipCode} updateValue={handleUpdate}/>
+          <CheckoutInput field="zipCode" label="Zipcode" value={userInfo.zipCode} updateValue={handleUpdate} validate={(value) => value.length <= 5}/>
         </Grid>
         <br />
         <Grid item xs={6}>
