@@ -5,7 +5,7 @@ import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
 import StateDropdown from './StateDropdown'
 import { createOrder } from '../../api'
 
-const CheckoutForm = ({products, price}) => {
+const CheckoutForm = ({products, price, orderComplete}) => {
   const stripe = useStripe()
   const elements = useElements()
   
@@ -34,7 +34,7 @@ const CheckoutForm = ({products, price}) => {
       card: cardElement,
     });
 
-    createOrder(userInfo, paymentMethod, products, price)
+    createOrder(userInfo, paymentMethod, products, price, orderComplete)
   }
 
 

@@ -1,5 +1,6 @@
 package com.arbaazmeghani;
 
+import com.stripe.exception.StripeException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class OrderController {
     }
 
     @PostMapping("/orders")
-    public void addOrder(@RequestBody Order order) {
-        orderService.addOrder(order);
+    public Order addOrder(@RequestBody Order order) throws StripeException {
+        return orderService.addOrder(order);
     }
 }

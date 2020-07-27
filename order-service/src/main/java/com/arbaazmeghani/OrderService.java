@@ -1,5 +1,7 @@
 package com.arbaazmeghani;
 
+import com.stripe.exception.StripeException;
+import com.stripe.model.PaymentIntent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -20,11 +22,14 @@ public class OrderService {
         this.stripeClient = stripeClient;
     }
 
-    public void addOrder(Order order) {
-        stripeClient.charge(order.getStripePaymentId(), order.getTotalCost());
+    public Order addOrder(Order order) throws StripeException {
+        PaymentIntent payment = stripeClient.charge(order.getStripePaymentId(), order.getTotalCost());
+        order.setPaymentId(payment.getId());
         orderRepository.save(order);
         log.info("New Order Received with ID: {}", order.getOrderId());
         orderPublisherService.publishOrder(order, order.getOrderStatus());
+
+        return order;
     }
 
     public Optional<Order> retrieveOrder(Long id) {

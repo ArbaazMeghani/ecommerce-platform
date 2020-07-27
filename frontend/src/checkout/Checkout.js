@@ -14,6 +14,10 @@ export default function Checkout() {
     history.push("/")
   }
 
+  const orderComplete = (order) => {
+    history.push(`/confirmation?orderId=${order.orderId}`)
+  }
+
   let totalPrice = 0.0
   products.forEach(product => {
     totalPrice += product.quantity * product.price
@@ -27,7 +31,7 @@ export default function Checkout() {
     <div style={{marginLeft: "20%", marginRight: "20%"}}>
       <h1>checkout</h1>
       <Elements stripe={stripePromise}>
-        <CheckoutForm products={products} price={totalPrice}/>
+        <CheckoutForm products={products} price={totalPrice} orderComplete={orderComplete}/>
       </Elements>
     </div>
   )

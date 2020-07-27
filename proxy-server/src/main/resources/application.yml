@@ -22,3 +22,7 @@ zuul:
       stripPrefix: false
       path: /order-service/**
       serviceId: order-service
+
+ribbon:
+  ConnectTimeout: 10000000
+  ReadTimeout: 10000000

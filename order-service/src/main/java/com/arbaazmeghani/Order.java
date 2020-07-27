@@ -24,6 +24,7 @@ public class Order {
     private Long orderId;
 
     private BigDecimal totalCost;
+    private String paymentId;
 
     @Transient
     private String stripePaymentId;
