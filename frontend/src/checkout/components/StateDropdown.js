@@ -15,9 +15,9 @@ export default function StateDropdown({field, value, updateValue}) {
       <FormControl required style={{width: "65px"}}>
         <InputLabel id="demo-simple-select-label">State</InputLabel>
         <Select
+          native
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          required
           value={value}
           onChange={(event) => updateValue(field, event.target.value, (value) => true)}
         >
