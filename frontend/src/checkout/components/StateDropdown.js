@@ -19,7 +19,7 @@ export default function StateDropdown({field, value, updateValue}) {
           id="demo-simple-select"
           required
           value={value}
-          onChange={(event) => updateValue(field, event.target.value)}
+          onChange={(event) => updateValue(field, event.target.value, (value) => true)}
         >
           {states.map(state => <MenuItem key={state} value={state}>{state}</MenuItem>)}
         </Select>
